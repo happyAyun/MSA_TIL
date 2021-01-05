@@ -38,8 +38,8 @@ let multiply = ((x,y)=>{ return x*y; })(20,10); // 함수의 자체적 실행.
 console.log(multiply); // 함수 객체를 console.log에 넣어줌. (함수() X, 함수 객체가 결과 값을 가짐).
 
 
-//클로져 -> 지역 변수의 lifespan이 끝나도 로컬변수를 사용해서 계산해야 할 경우에 사용된다.
-//함수에서 다른 함수 리턴
+// 클로져 -> 지역 변수의 lifespan이 끝나도 로컬변수를 사용해서 계산해야 할 경우에 사용된다.
+// 함수에서 다른 함수 리턴
 function makeAdder(x){
     let y = 1; //makeAdder function local variable
     return function(z){
@@ -49,14 +49,14 @@ function makeAdder(x){
 }
 
 let add5 = makeAdder(5);
-let add10 = makeAdder(10);
+let add10 = makeAdder(10); // 함수의 return 형태
 console.log(add5(2),add5);
 console.log(add10(2),add10);
 
 function multi(n){
     return function(){
         // let n=200; -> 가까운 지역변수가 우선.
-        return n*=n;
+        return n*=n; // 대입 연산자 *= 활용.
     }
 }
 
@@ -65,4 +65,3 @@ let multi10 = multi(10); // furction의 형태
 console.log(multi5, multi5());
 console.log(multi10, multi10());
 
-//재귀함수 -> 교재!! 복습하면서 보기
