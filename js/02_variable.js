@@ -1,4 +1,4 @@
-//var x; //변수선언 > 주석 처리하여도 에러가 나지 않음.
+// var x; //변수선언 > 주석 처리하여도 에러가 나지 않음.
 x = 6; //값 할당
 x="6"; // 에러 안남. 문자타입으로 변환되어 들어감.
 document.getElementById("data").innerHTML = "<h3> variable x = " + x + "</h3>";

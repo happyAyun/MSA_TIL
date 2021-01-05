@@ -38,7 +38,7 @@ let multiply = ((x,y)=>{ return x*y; })(20,10); // 함수의 자체적 실행.
 console.log(multiply); // 함수 객체를 console.log에 넣어줌. (함수() X, 함수 객체가 결과 값을 가짐).
 
 
-//클로져 -> 라이브 스팬이 끝나도 로컬변수를 사용해서 계산해야 할 경우에 사용된다.
+//클로져 -> 지역 변수의 lifespan이 끝나도 로컬변수를 사용해서 계산해야 할 경우에 사용된다.
 //함수에서 다른 함수 리턴
 function makeAdder(x){
     let y = 1; //makeAdder function local variable

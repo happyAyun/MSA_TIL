@@ -10,7 +10,7 @@ console.log(`${x}*${y}=${x*y}`);
 console.log(`${x}/${y}=${x/y}`);
 console.log(`${y}%${x}=${y%x}`);
 
-// 2. 대입 연산자 : = , += , -= ...
+// 2. 대입 연산자 : = , += , -= , ...
 const z = x+y;
 var result = 0;
 result += x;
