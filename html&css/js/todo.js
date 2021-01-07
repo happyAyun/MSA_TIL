@@ -1,5 +1,10 @@
 let todoInputHandler= function(){
     // todos 배열에 {} todoNum은 todos.length+1, title: #todoInput에 입력된 value 값 추가 }
+    const result = todos.map(todo => todo.todoNum);
+    const maxTodoNum = Math.max.apply(null,result); // Math.max(...result);
+    const addTitle = document.getElementById("todoInput").value;
+    let todo = {todoNum:maxTodoNum+1, title :addTitle };
+    todos.push(todo);
     // todoList rendering
     displayList();
 } 
