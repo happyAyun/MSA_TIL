@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <h1>jquery exemple</h1>
+        <a href="http://jquery.com/">jQuery</a>
+        <button id="alertButton">Alert</button>
+       <script>
+           $(document).ready(function(){
+               $("#alertButton").on("click",function(){
+                   alert("Button Clicked")
+               })
+           })
+        // $( document ).ready(function() {
+        //     $( "a" ).click(function( event ) {
+ 
+        //     alert( "Thanks for visiting!" );
+        //     event.preventDefault(); // 원래 a의 링크 기능이 http로 넘어가게 되어있는데, 원래의 기능에서 보내지는 기능을 막음.
+        //     });
+         
+        // });
+    </script>
+    </body>
+</html>
