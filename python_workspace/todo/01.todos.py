@@ -40,7 +40,7 @@ while True :
         print("====== 일정 전체 삭제 ======")
         check = input("일정을 모두 삭제하시겠습니까? [y/n]")
         if check == 'y' or check == 'Y' :
-            schedule = []
+            schedule.clear()
             print("일정이 모두 삭제되었습니다.")
     
     else :

@@ -20,16 +20,18 @@
 #     month=input("월은 1-12사이 값을 입력 : ")
 
 
-# list type : [str, int, float, bool, list] 
+# list type : [str, int, float, bool, list] // 혼합하여 들어갈 수 있다.
 #               +, *(iteration), len()
 # append(), insert(), del, pop(), remove(), clear()
-list_a = [1,2,1,3]
-list_b = [4,5,6]
-print(list_a + list_b, "연산 후: ", list_a)
+list_a = ["hi",2.87,1,False]
+list_b = [4,5,len(list_a)]
+print(list_a + list_b, "연산 후: ", list_a) # list_a 는 변하지 않음.
 print(list_a.append(4), "append 후 list_a ", list_a) # 마지막 index+1 뒤에 추가
 print(list_a.insert(1,5), "insert 후 list_a ", list_a) # 해당 index에 삽입
 print(list_a.pop(1), "pop(1) 삭제 후 list_a", list_a) # 해당 index 삭제
-print(list_a.remove(1)), "remove(1) 1인 값 삭제 후 list_a", list_a # 첫번째 만나는 값 삭제
+print(list_a.remove(1), "remove(1) 1인 값 삭제 후 list_a", list_a) # 첫번째 만나는 값 삭제
+print(list_b.extend(list_a)) # None
+print(list_b) # list_b가 바뀜.
 
 # for 반복자 in 반복할 수 있는 데이터(list, dictionary, string, range()) :
 # 실행문

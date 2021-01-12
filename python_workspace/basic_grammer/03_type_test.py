@@ -4,7 +4,7 @@ print(type(True))
 print(type(3.141592))
 
 # << 실행결과 >>
-# <class 'str'>
+# <class 'str'> 
 # <class 'int'>
-# <class 'bool'>
+# <class 'bool'> 
 # <class 'float'>
