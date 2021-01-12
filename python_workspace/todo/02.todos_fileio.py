@@ -61,8 +61,9 @@ def init_data_load() :
         while True:
             data = read_file.readline()
             if len(data.split(",")) == 2 :
-                schedule = data.split(",")
-                schedules.append({"todoNum":schedule[0].strip(), "title":schedule[1].strip()})
+                schedule = data.split(",") # schedule은 list형이 되기 때문에 strip() 함수를 사용할 수 없다.
+                # d = schedule[0] => d는 str형이 되기 때문에 d에는 strip() 함수를 사용할 수 있다.
+                schedules.append({"todoNum":schedule[0].strip(), "title":schedule[1].strip().strip('\n')})
             if not data:
                 break
         read_file.close()
