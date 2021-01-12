@@ -12,9 +12,6 @@ while True :
     print("0. 시스템 종료")
 
     menu = input("메뉴를 입력하세요 : ")
-    while not menu.isdecimal() :
-        print("잘못 입력하셨습니다. 다시 올바른 숫자로 입력하세요. ")
-        menu = input("메뉴를 입력하세요 : ")
     
     if menu =="1":
         print("====== 일정 등록 ======")
@@ -43,8 +40,13 @@ while True :
             schedule.clear()
             print("일정이 모두 삭제되었습니다.")
     
-    else :
-        print("시스템을 종료합니다.")
+    elif menu =="0" :
+         print("시스템을 종료합니다.")
         break
+
+    else :
+        print("잘못 입력하셨습니다. 다시 올바른 숫자로 입력하세요. ")
+       
+
 
 

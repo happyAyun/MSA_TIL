@@ -35,7 +35,7 @@ print(list_b) # list_b가 바뀜.
 
 # for 반복자 in 반복할 수 있는 데이터(list, dictionary, string, range()) :
 # 실행문
-index = 0
-for data in list_a :
+# index = 0
+for index,data in enumerate(list_a) :
     print("list_a[{0}] : {1}".format(index, data))
-    index += 1
+    # index += 1

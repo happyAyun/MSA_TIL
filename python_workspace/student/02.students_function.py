@@ -36,7 +36,7 @@ def is_exist(id) :
     for index, student in enumerate(students):
         if student["id"] == id :
             return index
-        return -1
+    return -1
 
 # menu display
 def menu_display() :
@@ -50,6 +50,7 @@ def menu_display() :
 # message display
 def message_display(message) :
     print(message)
+
 
 while True :
     menu_display()

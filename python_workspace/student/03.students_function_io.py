@@ -101,8 +101,8 @@ while True :
         
 
     elif menu == "0" :
+        
         message_display("수강생 관리 프로그램을 종료합니다.")
-        save_list()
         break
     else :
         print()

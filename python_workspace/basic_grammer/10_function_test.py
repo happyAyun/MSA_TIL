@@ -5,7 +5,7 @@
 # 함수는 정의 --> 함수 호출
 # 함수 호출 시 정의된 함수의 argumentlist에 맞도록 데이터 전달.
 # 가변 매개변수(*argumentlist) 사용 시 호출 시마다 argumentlist가 다를 수 있다.
-# 기본 매개변수(argumentlist = 값) argumentlist 기본값 설정 가능 => 호출 시 argumentlist 생략 가능.
+# 기본 매개변수(argument = 값) argument 기본값 설정 가능 => 호출 시 argument 생략 가능.
 
 # 함수 정의
 def print_3_times(*values, data='test') :
@@ -16,7 +16,7 @@ print()
 # 함수 호출
 print_3_times('test1')
 print_3_times('test1','test2')
-print_3_times()
+print_3_times() # 아무런 값도 출력하지 않음.
 print_3_times('test1','test2', data='test10')
 
 def argument_test(a, b=20, c=30) :
@@ -58,6 +58,7 @@ for ldata in list_data :
     print(ldata, end=" ")
 print()
 list_data[0]=100
+print(list_data[0]) # list는 인덱스로 변경 가능함.
 # tuple_data[0]=100 # Type error : 값 변경할 수 없음.
 
 #tuple : function 에서 다수의 데이터 리턴시 사용.
@@ -65,7 +66,8 @@ def test_tuple() :
     return (10,20)
 
 a,b = test_tuple()
-# a = 30    => a값 변경 가능. 
+print("{0} + {1} = {2}".format(a,b,a+b))
+a = 30    # a값 변경 가능. 
 print("{0} + {1} = {2}".format(a,b,a+b))
 
 # 람다 : lamda argumentlist : return   => 1회성 익명함수
