@@ -1,4 +1,5 @@
 import os.path
+import entity.student.Student as Student
 
 #수강생 관리 시스템
 students=[] #global variable

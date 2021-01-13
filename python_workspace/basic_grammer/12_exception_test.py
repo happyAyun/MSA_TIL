@@ -43,3 +43,16 @@ finally :
 #      예외 처리 실행문
 # finally :
 #      무조건 실행되는 실행문
+
+# class UserException(Exception): 
+    # def __init__(self):
+    #     Exception.__init__(self)  ??????????
+
+    # def __str__(self):
+    #     return "사용자 정의 오류 발생"
+
+class UserException(Exception):
+    def __init__(self,message):
+        super().__init__(message)
+
+raise UserException("사용자 정의 오류 발생")
