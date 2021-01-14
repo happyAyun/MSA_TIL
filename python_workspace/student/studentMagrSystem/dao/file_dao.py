@@ -18,7 +18,12 @@ def init_data_load() :
             data = read_file.readline()
             if len(data.split("|")) == 2 :
                 student = data.split("|")[1].strip("\n").split(", ")
-                students.append(Student(student[0].strip(), student[1].strip(), int(student[2].strip()), student[3].strip()})
+                students.append(Student(student[0].strip(), student[1].strip(), int(student[2].strip()), student[3].strip()))
             if not data : break
         read_file.close()
     return students
+
+   
+
+
+

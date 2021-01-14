@@ -1,7 +1,7 @@
 from entity.student import Student
 
-#menu display
-def menu_dispay():
+# menu display
+def menu_display():
     print("====== Cloud MSA 반 수강생 관리 시스템 ======")
     print("1.수강생 정보 등록")
     print("2.수강생 목록 보기")
@@ -9,7 +9,12 @@ def menu_dispay():
     print("4.수강생 정보 삭제")
     print("0.종료")
 
-#message display
+# menu select display
+def menu_select():
+    menu = input("메뉴를 선택하세요 : ")
+    return menu
+    
+# message display
 def message_display(message):
     print(message)
 
@@ -30,3 +35,13 @@ def input_display():
     major = input("전공 : ")
     return Student(id,name,int(age),major) # 생성자로 넘김.
 
+# update input display
+def update_display():
+    id = input("수정할 수강생 번호 : ")
+    major = input("수정할 전공 : ")
+    return (id, major)
+
+# delete input display
+def delete_display():
+    id = input("수정할 수강생 번호 : ")
+    return id
