@@ -17,7 +17,7 @@ while True:
         controller.getAllStudents()
 
     elif menu =="3" :
-        id, major = update_display()
+        id, major = update_display() # (id,major)로 받아도 상관없다.
         controller.update(id,major)
        
     elif menu=="4" :

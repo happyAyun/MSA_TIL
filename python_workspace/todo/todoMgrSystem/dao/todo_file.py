@@ -22,4 +22,4 @@ def init_data_load() :
             if not data:
                 break
         read_file.close()
-    return schedules
+    return schedule

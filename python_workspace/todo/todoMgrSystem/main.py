@@ -10,7 +10,6 @@ controller.file_read()
 while True :
     menu_display()
 
-    # menu = input("메뉴를 입력하세요 : ")
     menu = menu_select()
     if menu =="1":
         schedule = input_display()

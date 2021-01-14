@@ -39,7 +39,7 @@ class TodoService :
             return "삭제되지 않았습니다."
 
     def is_exist(self,todoNum) :
-        for index, schedule in enumerate(TodoService.schedules) :
+        for index, schedule in enumerate(self.schedules) : # self. 도 역시 됨.
             if schedule.todoNum == todoNum :
                 return index
         return -1   # 여기에 return -1이 있어야 함.
