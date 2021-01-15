@@ -8,6 +8,8 @@
 # 기본 매개변수(argument = 값) argument 기본값 설정 가능 => 호출 시 argument 생략 가능.
 
 # 함수 정의
+# variable = 1000 # 전역변수
+
 def print_3_times(*values, data='test') :
     for value in values:
         print("{0} : hello function {1}".format(value, data))
