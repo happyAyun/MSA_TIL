@@ -20,11 +20,12 @@ def createTodo(request):
     new_todo.save()
     return HttpResponseRedirect(reverse("index")) # 다시 index 페이지로 되돌아간다. 응답하면서 바로 redirect(다시 서버로 아무런 명령없이 자동request 재요청을 자동으로 으로 감.)하게 함.(urls에서 name을 주었음)
 
-# todo_app/todoList
-def todoList(request):
-    pass
-
 # todo_app/deleteTodo
 def deleteTodo(request):
-    pass
+    delete_todo_id = request.GET['id']
+    todo = Todo.objects.get(id=delete_todo_id)
+    todo.delete()
+    return HttpResponseRedirect(reverse('index'))
+
+
 
