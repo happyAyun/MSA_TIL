@@ -1,4 +1,4 @@
-import React from "react"; //rsfp
+import React from "react"; // rsfp - react stateless function props
 import PropTypes from "prop-types";
 import UserInfo from "./component/UserInfo";
 

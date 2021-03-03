@@ -1,39 +1,18 @@
-import React, { Component } from "react"; // rcc
+import React, { useState } from "react";
 
-class Counter extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      localCount: 0,
-    };
-  }
-
-  onIncrease = () => {
-    this.setState({
-      localCount: this.state.localCount + 1,
-    });
-  };
-
-  onDecrease = () => {
-    this.setState({
-      localCount: this.state.localCount - 1,
-    });
-  };
-
-  render() {
-    const { count, increase, decrease } = this.props;
-    return (
-      <div>
-        <h1> Count : {count}</h1>
-        <button onClick={increase}> + </button>
-        <button onClick={decrease}> - </button>
-        <hr />
-        <h1> LocalCount : {this.state.localCount}</h1>
-        <button onClick={this.onIncrease}> + </button>
-        <button onClick={this.onDecrease}> - </button>
-      </div>
-    );
-  }
+function Counter(props) {
+  const [count, setCount] = useState(0);
+  return (
+    <div>
+      <h1> Count : {props.count}</h1>
+      <button onClick={props.increase}> + </button>
+      <button onClick={props.decrease}> - </button>
+      <hr />
+      <h1> LocalCount : {count}</h1>
+      <button onClick={() => setCount(count + 1)}> + </button>
+      <button onClick={() => setCount(count - 1)}> - </button>
+    </div>
+  );
 }
 
 export default Counter;
