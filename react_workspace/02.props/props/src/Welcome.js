@@ -1,4 +1,4 @@
-import React from "react"; //rsc - react state less
+import React from "react"; //rsc - react stateless
 import PropTypes from "prop-types";
 // React Component 선언 : function(lamda function), Class
 // <부모 element key="value"> content </부모 element>
