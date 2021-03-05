@@ -1,0 +1,93 @@
+body {
+  text-align: center;
+  background-color: #f6f6f8;
+}
+h1 {
+  color: #2f3b52;
+  font-weight: 900;
+  margin: 2.5rem 0 1.5rem;
+}
+.inputBox {
+  background: #fff;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 5px;
+}
+.inputBox input {
+  border-style: none;
+  font-size: 0.9rem;
+}
+.shadow {
+  box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.03);
+}
+
+.addContainer {
+  float: right;
+  background: linear-gradient(90deg, #6478fb, #8763fb);
+  display: inline-block;
+  width: 3rem;
+  border-radius: 0 5px 5px 0;
+}
+
+.addBtn {
+  color: #fff;
+  vertical-align: middle;
+}
+.fa-plus:before {
+  content: "\f067";
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin-top: 0;
+  text-align: left;
+}
+
+li {
+  display: flex;
+  min-height: 50px;
+  height: 50px;
+  line-height: 50px;
+  margin: 0.5rem 0;
+  padding: 0 0.9rem;
+  background: #fff;
+  border-radius: 5px;
+}
+.checkBtn {
+  line-height: 45px;
+  color: #62acde;
+  margin-right: 5px;
+}
+.removeBtn {
+  margin-left: auto;
+  color: #de4343;
+}
+
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.fa-trash-o:before {
+  content: "\f014";
+}
+/* .background {
+  background-image: url(background.jpg);
+} */
+
+.clearAllBtn {
+  color: #e20303;
+  display: block;
+}
+.clearAllContainer {
+  width: 8.5rem;
+  height: 50px;
+  line-height: 50px;
+  background-color: #fff;
+  border-radius: 5px;
+  margin: 0 auto;
+}

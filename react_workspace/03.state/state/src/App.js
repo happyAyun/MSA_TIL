@@ -1,9 +1,9 @@
-// import React, { Component } from "react";
-import React, { useState } from "react";
 import Counter from "./Counter";
 import Result from "./Result";
 
 // State Hook을 사용한 function component
+import React, { useState } from "react";
+
 function App() {
   // 변경 데이터 state 변수 선언.
   const [count, setCount] = useState(0);
@@ -18,6 +18,8 @@ function App() {
     </div>
   );
 }
+
+// import React, { Component } from "react";
 
 // class App extends Component {
 //   // 변경데이터는 state를 사용

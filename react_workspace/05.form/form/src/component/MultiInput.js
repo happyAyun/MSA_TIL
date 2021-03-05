@@ -11,7 +11,6 @@ class MultiInput extends Component {
 
   handleInputChange = event => {
     const { type, name } = event.target;
-    console.log([type]);
     const value =
       type === "checkbox" ? event.target.checked : event.target.value;
     this.setState({
