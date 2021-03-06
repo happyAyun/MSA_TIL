@@ -13,7 +13,7 @@ class todoInput extends Component {
             value={inputText}
             onChange={event => changeText(event.target.value)}
           />
-          <span class="addContainer" onClick={addList()}>
+          <span class="addContainer" onClick={addList({ inputText })}>
             <i aria-hidden="true" class="addBtn fa fa-plus"></i>
           </span>
         </form>

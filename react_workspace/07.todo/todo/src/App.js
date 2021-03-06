@@ -12,28 +12,35 @@ class App extends Component {
       todos: {},
     };
   }
+
   changeText = listText => {
     this.setState({
       inputText: listText,
     });
   };
 
-  addList = () => {
-    let todos = {};
-    todos += this.state.inputText;
-    this.setState(todos);
+  addList = (list, index) => {
+    // let todos = {};
+    list += { todo: this.state.inputText, index: index };
+    this.setState(list);
   };
 
+  todoDeleteHandler = (list, item) => {};
+
+  todoClear = list => {
+    list = [];
+  };
   render() {
+    let list = [];
     return (
       <div>
         <TodoInput
           changeList={this.changeText}
-          addList={this.addList}
+          addList={this.addList(list)}
           inputText={this.state.inputText}
         />
-        <TodoList />
-        <ClearAll />
+        <TodoList list={list} todoDeleteHandler={this.todoDeleteHandler} />
+        <ClearAll list={list} todoClear={this.todoClear} />
       </div>
     );
   }

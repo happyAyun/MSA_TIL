@@ -22,6 +22,7 @@ class FilterableProductTable extends Component {
       inStockOnly: stocked,
     });
   };
+
   render() {
     return (
       <div>

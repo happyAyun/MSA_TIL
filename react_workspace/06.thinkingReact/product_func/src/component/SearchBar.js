@@ -3,18 +3,28 @@ import { Input } from "semantic-ui-react";
 import { Checkbox } from "semantic-ui-react";
 
 function SearchBar(props) {
+  const {
+    filterText,
+    inStockOnly,
+    handleFilterTextChange,
+    handleInStockChange,
+  } = props;
+
   return (
     <div>
       <Input
         focus
+        type="text"
         placeholder="Search..."
-        value={props.filterText}
-        onChange={event => props.handleFilterTextChange(event.tartget.value)}
+        value={filterText}
+        onChange={event => handleFilterTextChange(event.tartget.value)}
       />
       <Checkbox
         toggle
-        onChange={event => props.handleInStockChange(event.target.toggle)} //?
+        checked={inStockOnly}
+        onChange={event => handleInStockChange(event)}
       />
+      &nbsp; Only show products in stock
     </div>
   );
 }

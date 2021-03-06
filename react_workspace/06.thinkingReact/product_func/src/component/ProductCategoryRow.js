@@ -2,7 +2,8 @@ import React from "react";
 import { Table } from "semantic-ui-react";
 
 function ProductCategoryRow(props) {
-  return <Table.Row>{props.category}</Table.Row>;
+  const { category } = props;
+  return <Table.Row>{category}</Table.Row>;
 }
 
 export default ProductCategoryRow;

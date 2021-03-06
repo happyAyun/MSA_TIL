@@ -4,14 +4,15 @@ import ProductRow from "./ProductRow";
 import { Icon, Table } from "semantic-ui-react";
 
 function ProductTable(props) {
+  const {products, filterText, inStockOnly} = props;
   const ProductList = [];
   let lastCategory = null;
 
-  props.products.forEach(product => {
-    if (product.name.indexOf(props.filterText) === -1) {
+  products.forEach(product => {
+    if (product.name.indexOf(filterText) === -1) {
       return;
     }
-    if (props.inStockOnly && !product.stocked) {
+    if (inStockOnly && !product.stocked) {
       return;
     }
     if (product.category !== lastCategory) {
