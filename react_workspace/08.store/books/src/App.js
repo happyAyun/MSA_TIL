@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import { Grid } from "semantic-ui-react";
+import BookContainer from "./container/BookContainer";
+import BookListContainer from "./container/BookListContainer";
+import { inject, observer } from "mobx-react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+@inject("BookStore") // 부모에 BookStore가 있다면 BookStore로 사용하라.
+@observer
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <Grid columns={2}>
+          <Grid.Row>
+            <BookListContainer />
+            <BookContainer />
+          </Grid.Row>
+        </Grid>
+      </div>
+    );
+  }
 }
 
 export default App;

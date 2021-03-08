@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-
+import "../index.css";
 class todoInput extends Component {
   render() {
-    const { inputText, changeText, addList } = this.props;
+    const { inputText, changeText, addTodoList } = this.props;
     return (
-      <div class="inputBox shadow">
+      <div className="inputBox shadow">
         <form>
           <input
             id="todoInput"
@@ -13,8 +13,11 @@ class todoInput extends Component {
             value={inputText}
             onChange={event => changeText(event.target.value)}
           />
-          <span class="addContainer" onClick={addList({ inputText })}>
-            <i aria-hidden="true" class="addBtn fa fa-plus"></i>
+          <span
+            className="addContainer"
+            onClick={inputText => addTodoList({ inputText })} //???
+          >
+            <i aria-hidden="true" className="addBtn fa fa-plus"></i>
           </span>
         </form>
       </div>

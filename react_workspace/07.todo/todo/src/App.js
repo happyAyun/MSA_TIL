@@ -1,7 +1,7 @@
 import TodoList from "./component/TodoList";
 import TodoInput from "./component/TodoInput";
 import ClearAll from "./component/ClearAll";
-
+// import Todos from "./Todos";
 import React, { Component } from "react";
 
 class App extends Component {
@@ -9,38 +9,49 @@ class App extends Component {
     super(props);
     this.state = {
       inputText: "",
-      todos: {},
+      // todos: Todos,
+      todos: [],
     };
   }
 
-  changeText = listText => {
+  changeText = text => {
     this.setState({
-      inputText: listText,
+      inputText: text,
     });
   };
 
-  addList = (list, index) => {
-    // let todos = {};
-    list += { todo: this.state.inputText, index: index };
-    this.setState(list);
+  addTodoList = () => {
+    this.setState({
+      todos: this.state.todos.concat(this.state.inputText),
+    }); // list 추가
   };
 
-  todoDeleteHandler = (list, item) => {};
-
-  todoClear = list => {
-    list = [];
+  todoDeleteHandler = item => {
+    const ind = this.state.todos.indexOf(item);
+    this.setState({
+      todos: this.state.todos.splice(ind, 1),
+    });
   };
+
+  // todoClear = () => {
+  //   this.setState({
+  //     todos: this.state.todos.splice(0),
+  //   });
+  // };
+
   render() {
-    let list = [];
     return (
       <div>
         <TodoInput
-          changeList={this.changeText}
-          addList={this.addList(list)}
+          changeText={this.changeText}
+          addTodoList={this.addTodoList}
           inputText={this.state.inputText}
         />
-        <TodoList list={list} todoDeleteHandler={this.todoDeleteHandler} />
-        <ClearAll list={list} todoClear={this.todoClear} />
+        <TodoList
+          todos={this.state.todos}
+          todoDeleteHandler={this.todoDeleteHandler}
+        />
+        {/* <ClearAll todoClear={this.todoClear} /> */}
       </div>
     );
   }

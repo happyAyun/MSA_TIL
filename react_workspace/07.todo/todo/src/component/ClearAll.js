@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-
+import "../index.css";
 class ClearAll extends Component {
   render() {
-    const { list, todoClear } = this.props;
+    const { todoClear } = this.props;
     return (
-      <div class="clearAllContainer">
-        <span class="clearAllBtn" onClick={todoClear(list)}>
+      <div className="clearAllContainer">
+        <span className="clearAllBtn" onClick={todoClear()}>
           Clear All
         </span>
       </div>

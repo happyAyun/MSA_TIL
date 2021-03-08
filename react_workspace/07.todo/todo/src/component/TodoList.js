@@ -1,17 +1,17 @@
 import React, { Component } from "react";
-import displayList from "./displayList";
+import DisplayList from "./DisplayList";
 
 class TodoList extends Component {
   render() {
-    const { list, todoDeleteHandler } = this.props;
-    const itemList = list.map(item => {
-      return <displayList item={item} todoDeleteHandler={todoDeleteHandler} />;
+    const { todos, todoDeleteHandler } = this.props;
+    let itemList = "";
+    itemList = todos.map(todo => {
+      return <DisplayList todo={todo} todoDeleteHandler={todoDeleteHandler} />;
     });
-
     return (
       <section>
         <ul id="todoList">{itemList}</ul>
-        <displayList />
+        {itemList}
       </section>
     );
   }

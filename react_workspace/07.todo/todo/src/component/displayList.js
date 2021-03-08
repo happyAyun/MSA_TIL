@@ -1,19 +1,19 @@
 import React, { Component } from "react";
 
-class displayList extends Component {
+class DisplayList extends Component {
   render() {
-    const { item, todoDeleteHandler } = this.props;
+    const { todo, todoDeleteHandler } = this.props;
     return (
       <div>
-        <li class="shadow">
-          <i aria-hidden="true" class="checkBtn fa fa-check"></i>
-          {item.todo}
+        <li className="shadow">
+          <i aria-hidden="true" className="checkBtn fa fa-check"></i>
+          {todo.todo}
           <span
-            type="button"
-            class="removeBtn"
-            onClick={todoDeleteHandler({ item })}
+            // type="button" //???????
+            className="removeBtn"
+            onClick={todoDeleteHandler({ todo })}
           >
-            <i aria-hidden="true" class="fa fa-trash-o"></i>
+            <i aria-hidden="true" className="fa fa-trash-o"></i>
           </span>
         </li>
       </div>
@@ -21,4 +21,4 @@ class displayList extends Component {
   }
 }
 
-export default displayList;
+export default DisplayList;

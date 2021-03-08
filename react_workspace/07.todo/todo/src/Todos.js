@@ -1,5 +1,3 @@
-import TodoList from "../../../07.todo/todo/src/component/TodoList";
+let Todos = [];
 
-TodoList = [];
-
-export default TodoList;
+export default Todos;
