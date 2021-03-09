@@ -1,0 +1,30 @@
+.inputBox{
+    background: #fff;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 5px;
+}
+.inputBox input{
+    border-style: none;
+    font-size: .9rem;
+}
+.shadow{
+    box-shadow: 5px 10px 10px rgba(0,0,0,.03);
+}
+
+.addContainer{
+    float: right;
+    background: linear-gradient(90deg,#6478fb,#8763fb);
+    display: inline-block;
+    width: 3rem;
+    border-radius: 0 5px 5px 0;
+}
+
+.addBtn {
+    color: #fff;
+    vertical-align: middle;
+}
+
+.fa-plus:before {
+    content: "\f067";
+}
