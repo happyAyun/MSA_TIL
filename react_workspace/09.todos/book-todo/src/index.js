@@ -3,11 +3,11 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { Provider } from "mobx-react";
-import ProductStore from "./store/ProductStore";
-
+import "semantic-ui-css/semantic.min.css";
+import TodoStore from './store/TodoStore'
+import BookStore from "./store/BookStore"
 ReactDOM.render(
-  <Provider ProductStore={ProductStore}>
+  <Provider TodoStore="TodoStore" BookStore="BookStore">
     <App />
   </Provider>,
   document.getElementById("root")
