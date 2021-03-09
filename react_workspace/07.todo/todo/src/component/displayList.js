@@ -8,13 +8,9 @@ class DisplayList extends Component {
         <li className="shadow">
           <i aria-hidden="true" className="checkBtn fa fa-check"></i>
           {todo.todo}
-          <span
-            // type="button" //???????
-            className="removeBtn"
-            onClick={todoDeleteHandler({ todo })}
-          >
+          <button className="removeBtn" onClick={todoDeleteHandler({ todo })}>
             <i aria-hidden="true" className="fa fa-trash-o"></i>
-          </span>
+          </button>
         </li>
       </div>
     );

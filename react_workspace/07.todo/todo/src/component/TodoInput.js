@@ -11,14 +11,11 @@ class todoInput extends Component {
             type="text"
             placeholder="일정을 입력하세요"
             value={inputText}
-            onChange={event => changeText(event.target.value)}
+            onChange={event => changeText(event)}
           />
-          <span
-            className="addContainer"
-            onClick={inputText => addTodoList({ inputText })} //???
-          >
+          <button className="addContainer" onClick={() => addTodoList()}>
             <i aria-hidden="true" className="addBtn fa fa-plus"></i>
-          </span>
+          </button>
         </form>
       </div>
     );

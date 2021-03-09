@@ -1,7 +1,7 @@
 import TodoList from "./component/TodoList";
 import TodoInput from "./component/TodoInput";
 import ClearAll from "./component/ClearAll";
-// import Todos from "./Todos";
+import Todos from "./Todos";
 import React, { Component } from "react";
 
 class App extends Component {
@@ -9,21 +9,21 @@ class App extends Component {
     super(props);
     this.state = {
       inputText: "",
-      // todos: Todos,
-      todos: [],
+      todos: Todos,
+      // todos: [],
     };
   }
 
-  changeText = text => {
+  changeText = event => {
     this.setState({
-      inputText: text,
+      inputText: event.target.value,
     });
   };
 
   addTodoList = () => {
     this.setState({
-      todos: this.state.todos.concat(this.state.inputText),
-    }); // list 추가
+      todos: this.state.todos.concat({ todo: this.state.inputText }),
+    });
   };
 
   todoDeleteHandler = item => {
@@ -33,11 +33,11 @@ class App extends Component {
     });
   };
 
-  // todoClear = () => {
-  //   this.setState({
-  //     todos: this.state.todos.splice(0),
-  //   });
-  // };
+  todoClear = () => {
+    this.setState({
+      todos: this.state.todos.splice(0),
+    });
+  };
 
   render() {
     return (
