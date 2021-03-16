@@ -115,9 +115,9 @@
         </header>
         <!--todo input-->
         <div class="inputBox shadow">
-            <form action="./TodoInput/" method="POST">{% csrf_token %}
-                <input id="todoInput" type="text" placeholder="일정을 입력하세요"/>
-                <span class="addContainer" onclick="todoInputHandler()">
+            <form action="./todoInput/" method="POST">{% csrf_token %}
+                <input name="title" type="text" placeholder="일정을 입력하세요"/>
+                <span class="addContainer">
                     <!-- <i aria-hidden="true" class="addBtn fa fa-plus">
                     </i> -->
                     <button class="addBtn fa fa-plus" type="submit"></button>
@@ -126,28 +126,22 @@
         </div>
         <!--todo list-->
         <section>
-            <form action="./TodoDelete/" method="GET">
             <ul id="todoList">
-                {% for todo in todos %}
-                <!-- <script>
-                   displayList();
-                </script> -->
-                <li class="shadow">
-                    <i aria-hidden="true" class="checkBtn fa fa-check"></i>{{todo.title}}
-                    <input type="hidden" id="id" name="id" value="{{ todo.id }}"></input>
-                    <span type="button" class="removeBtn" onclick="submit">
-                        <i aria-hidden="true" class="fa fa-trash-o"></i>
-                    </span>
-                    <!-- <span class="input-group-addon">
-                        <button type="submit" class="custom-btn btn btn-danger">완료</button>
-                 </span> -->
-                </li>
+                <form action="./todoDelete/" method="GET">
+                    {% for todo in todos %}
+                    <li class="shadow">
+                        <i aria-hidden="true" class="checkBtn fa fa-check"></i>{{todo.title}}
+                        <input type="hidden" id="id" name="id" value="{{ todo.id }}"></input>
+                        <button type="submit" class="removeBtn"> 
+                            <i aria-hidden="true" class="fa fa-trash-o"></i>
+                        </button>
+                    </li>
+                    {% endfor %}
+                </form>
             </ul>
-        </form>
-        {% endfor %}
         </section>
         <!--clear all-->
-        <form action="./TodoReset/" method="">
+        <form action="./todoReset/" method="">
         <div class="clearAllContainer">
             <button type="submit" class="clearAllBtn">Clear All</button>
             <!-- <span class="clearAllBtn" onclick="submit">Clear All</span> -->

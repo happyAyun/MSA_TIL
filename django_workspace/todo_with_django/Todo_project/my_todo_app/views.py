@@ -8,7 +8,7 @@ from .models import Todo # .model **
 def index(request):
     todos = Todo.objects.all()
     context = {"todos" : todos}
-    return render(request, 'index.html', context)
+    return render(request, 'my_todo_app/index.html', context)
 
 def todoInput(request):
     title = request.POST['title']
@@ -17,13 +17,13 @@ def todoInput(request):
     return HttpResponseRedirect(reverse("index"))
 
 def todoDelete(request):
-    id = request.get['id']
-    todo = Todo.objects.get(id=id)
+    d_id = request.GET['id']
+    todo = Todo.objects.get(id=d_id)
     todo.delete()
     return HttpResponseRedirect(reverse("index"))
 
 def todoReset(request):
-    todo = Todo.objects.all()
-    todo.delete()
+    todos = Todo.objects.all()
+    todos.delete()
     return HttpResponseRedirect(reverse("index"))
     

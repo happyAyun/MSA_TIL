@@ -5,7 +5,7 @@ from .models import Todo
 from .forms import TodoForm
 
 # Create your views(controller) here.
-# request로 부터 [parameter값] 받아서 valid check
+# request로부터 [parameter값] 받아서 valid check
 # business method 호출 (우리는 여기서 구현)
 # view(template) 에서 참조할 데이터 저장
 # view(template) 선택
