@@ -1,0 +1,39 @@
+{% extends 'web01/base.html' %}
+{% load static %}
+<!-- Add your content of head and header -->
+
+ <!-- Add your content of header -->
+
+
+{% block content %}
+   
+{% if reset %}
+    <script>
+        alert('탈퇴처리가 되었습니다. 안녕히 가십시요 :-)')
+    </script>
+{% endif %}
+
+<div class="section-container section-half-background-image-container">
+    <div class="image-column"></div>
+    <div class="container">
+        <div class="row">
+            <div class="section-label reveal">
+            </div>
+            <div class="col-md-6 col-md-offset-6 text-column">
+                <h2>About Website</h2>
+                <h3>COOPERATIONIST</h3>
+                <p>이 웹사이트는 내가 아는 지식을 다른 사람과 공유하고 나누는 공간입니다.</p>
+                <p>또한, 내가 모르는 것을 다른 이에게 물어보며 배우는 공간입니다.</p>
+                <p>우리 모두는 함께할 때 빛이 납니다.</p>
+            
+                <a href="{% url 'viewList' %}" class="btn btn-default navbar-btn" >게시판 이동하기</a>
+            </div>
+            
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'web01/base.html' %}
+
+{% block content %}
+
+<div class="section-container" id="contact-section-container">
+    <div class="container contact-form-container">
+        <div class="row">
+            <div class="col-xs-12 col-md-offset-2 col-md-8">
+                <div class="section-container-spacer">
+                    <h2 class="text-center">로그인</h2>
+                </div>
+                <form action="./userLogin/" method="POST">
+                    {%csrf_token%}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="id" name="user_id" class="form-control" placeholder="id">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="password" name="password" class="form-control" placeholder="password">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <button type="submit" class="btn btn-primary">로그인</button> &nbsp; <span> {{error}} </span>
+                    
+                    <p>
+                        <br>
+                        <a href="{%url 'join'%}" class="btn btn-default">회원가입</a>
+                        <a href="{%url 'index'%}" class="btn btn-default">홈으로</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

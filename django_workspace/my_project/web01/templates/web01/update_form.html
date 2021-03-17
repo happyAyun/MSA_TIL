@@ -1,0 +1,45 @@
+{% extends 'web01/base.html' %}
+
+{% block content %}
+
+<div class="section-container" id="contact-section-container">
+    <div class="container contact-form-container">
+        <div class="row">
+            <div class="col-xs-12 col-md-offset-2 col-md-8">
+                <div class="section-container-spacer">
+                    <h2 class="text-center">게시물 수정</h2>
+                </div>
+                <form action="{%url 'updateView' %}" method="POST"> {% csrf_token %}
+                    <!-- <form action="./updateView/" method="POST"></form> -->
+                    <input type="hidden" name="id" value="{{content.id}}"/>
+                    <div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" name="title" class="form-control" placeholder="글제목" value="{{content.title}}">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {{error}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" rows="20" name="context" placeholder="Enter your message">{{content.context}}</textarea>
+                    </div>
+                    <div>
+                        {{error}}
+                    </div>
+                    <button type="submit" class="btn btn-primary">게시글 수정 등록</button>
+                    <a href="{% url 'viewList' %}" class="btn btn-default">취소</a>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

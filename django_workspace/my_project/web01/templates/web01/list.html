@@ -1,0 +1,94 @@
+{% extends 'web01/base.html' %}
+
+{% block content %}
+		<!-- bodytext_area -->
+		<br><br>
+        <div class="section-container-spacer">
+            <h2 class="text-center">게시판</h2>
+		</div>
+		<div class="bodytext_area box_inner">
+			<form action="./listSearch/" method="GET" class="minisrch_form">
+                {% csrf_token %}
+				<fieldset>
+					<legend>검색</legend>
+					<input type="text" id="text" name="text" class="tbox" title="검색어를 입력해주세요" placeholder="검색어를 입력해주세요" value="{{text}}">
+                    <!-- <a href="{%url 'listSearch'%}" class="btn_srch">검색</a> -->
+                    <button type="submit" class="btn_srch">검색</button>
+                    
+				</fieldset>
+            </form>
+            
+			<table class="bbsListTbl" summary="번호,제목,조회수 등을 제공하는 표">
+				<caption class="hdd">목록</caption>
+				<thead>
+					<tr>
+						<th scope="col">번호</th>
+						<th scope="col">제목</th>
+						<th scope="col">작성자</th>
+						<th scope="col">조회수</th>
+					</tr>
+                </thead>
+                
+				<tbody>
+				{% if contents %}
+					{% for content in contents %}
+					<form action="./moreView/?id={{content.id}}" method="GET">
+						{% csrf_token %}
+                        <input type="hidden" name="id" value="{{content.id}}" />
+                        <!-- <input type="hidden" name="u_id" value="{{user.user_id}}" />  -->
+                        <div name='content'>
+                            <tr>
+                                <td>{{ content.id }}</td>
+								<td class="tit_notice"><a href="./moreView/?id={{content.id}}">{{content.title}}</a></td>   
+                                <!--href="url?id='{{o.id}}'"-->
+                                <td class="tit_notice">{{content.userId.user_id}}</a> </td>
+                                <td class="tit_notice">{{content.cnt}}</a> </td>
+                            </tr>
+                        </div>
+                    </form>
+					{% endfor %} 
+				{% else %}
+					<div name='content'>
+						<td class="tit_notice"></td>   
+						<td class="tit_notice">해당 검색 결과가 없습니다.</a> </td>
+						<td class="tit_notice"><p class="btn_line txt_right">
+							<a href="{% url 'viewList' %}" class="btn_bbs">목록이동</a>
+						</p> </td>
+					</div>
+				{% endif %}
+				</tbody>
+			</table>
+			<br>
+			<a href="{% url 'listForm' %}" class="btn btn-default navbar-btn" >글쓰기</a>
+			<!-- pagination -->
+			<!-- 이전페이지 -->
+			<div class="pagination">
+			{% if contents.has_previous  %}
+			<a href="./listSearch/?text={{text}}&page={{ contents.previous_page_number }}"><span class="pagenum ">이전</span></a>
+			{% endif %}
+			
+			{% for page_number in contents.paginator.page_range %}
+			{% if page_number >= contents.number|add:-2 and page_number <= contents.number|add:2 %}
+				{% if page_number == contents.number %}
+				<a href="./listSearch/?text={{text}}&page={{ page_number }}"><span class="pagenum currentpage">{{page_number}}</span></a>
+				{% else %}
+				<a href="./listSearch/?text={{text}}&page={{ page_number }}"><span class="pagenum ">{{page_number}}</span></a>
+				{% endif %}
+			{% endif %}
+			{% endfor %}
+
+			<!-- 다음페이지 -->
+			{% if contents.has_next %}
+			<a href="./listSearch/?text={{text}}&page={{ contents.next_page_number }}"><span class="pagenum ">다음</span></a>
+			{% endif %}
+		</div>
+			
+			<!-- //pagination -->
+			
+		</div>
+		<!-- //bodytext_area -->
+
+	</div>
+	<!-- //container -->
+
+{% endblock %}

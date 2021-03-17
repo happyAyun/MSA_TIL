@@ -1,0 +1,141 @@
+{% extends 'web01/base.html' %}
+
+{% block content %}
+
+{% if not_login %}
+    <script>alert("로그인 후 답글 작성이 가능합니다.")</script>
+{% endif %}
+
+{% if not_write %}
+    <script>alert("작성하신 답글 내용이 없습니다.")</script>
+{% endif %}
+
+{% if not_change %}
+    <script>alert("변경하신 답글란에 내용이 없어 변경되지 않았습니다.")</script>
+{% endif %}
+<style>
+    #hide{
+        display: none;
+    }
+    #hide2{
+        display: none;
+    }
+</style>
+<script>
+    function modify(id,cont){
+        document.getElementById("Text").value=cont;
+        document.getElementById("tId").value=id;
+        // document.getElementById("show").style.display='none';
+        // document.getElementById("hide").style.display='block';
+        // document.getElementById("show2").style.display='none';
+    }
+    function cencel(){
+        document.getElementById("show").style.display='block';
+        document.getElementById("hide").style.display='none';
+        document.getElementById("show2").style.display='block';
+    }
+</script>
+
+    <!-- bodytext_area -->
+    <br><br>
+        <div class="section-container-spacer">
+            <h2 class="text-center">해당 글 보기</h2>
+        </div>
+    <form action="" method="GET"> {% csrf_token %}
+        <input type="hidden" name="id" value="{{content.id}}" />
+    <div class="bodytext_area box_inner">			
+        <ul class="bbsview_list">
+            <li class="bbs_title"> {{ content.title }} </li>
+            <li class="bbs_date">조회수 : <span>{{content.cnt}}</span></li> 
+            <li class="bbs_date">작성자 : <span>{{content.userId.user_id}}</span></li>
+            <li class="bbs_content">
+                <div class="editer_content">
+                    {{ content.context }}
+                </div>
+            </li>
+        </ul>
+        
+        <p class="btn_line txt_right">
+            <a href="{% url 'viewList' %}" class="btn_bbs">목록</a>
+        </p>
+    </form>
+        
+     <!-- 답글 영역 -->
+        <br>
+        <form action="./createReply/" method="POST"> 
+            {% csrf_token %}
+            <input type="hidden" id="tId" name="id" value=""/>
+            <div class="form-group">
+                <input type="hidden" name="content.id" value="{{content.id}}"/>
+                <textarea id="Text" class="form-control" rows="3" name="context" placeholder="답글을 달아주세요. 로그인 후 이용이 가능합니다."></textarea>
+            </div>
+            <div>
+                {{error}}
+            </div>
+            <button type="submit" class="btn btn-primary">등록</button>
+            <a href="./moreView/?id={{content.id}}" class="btn btn-default">취소</a>
+        </form>
+        
+    <!-- 답글리스트 -->
+
+        <table class="bbsListTbl">
+            <caption class="hdd">목록</caption>
+
+           
+        <br><br><br>
+            <thead>
+                <tr>
+                    <th scope="col">번호</th>
+                    <th scope="col">답글내용</th>
+                    <th scope="col">작성자</th>
+                    <th scope="col">기타</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                {% if not replies %}
+                아직 작성된 답글이 없습니다.
+                {% endif %}
+                {% for reply in replies %}
+                <form action="./deleteReply/" method="POST" name="replyform">
+                    {% csrf_token %}
+                    <input type="hidden" name="id" value="{{reply.id}}" />
+                    <input type="hidden" name="c_id" value="{{content.id}}" />
+                        <tr id="showHide">
+                            <td>{{ reply.id }}</td>
+                            <td class="tit_notice" >
+                                <div id="show"> 
+                                    {{reply.replyCon}}
+                                </div>
+                                <!-- <div id="hide"> 
+                                    <textarea id="context" class="form-control" rows="3" cols="30" name="context" style="width: 100%;">{{reply.replyCon}}</textarea>
+                                    <button type="submit" class="btn btn-primary">등록</button>
+                                    <a href="#" onclick="cencel()" class="btn btn-primary">취소</a>
+                                </div> -->
+                            </td>
+                            <td class="tit_notice">{{reply.user}}</td> 
+                            {% if user == reply.user %}
+                                <td class="tit_notice" id="show2">
+                                    <a href="#" onclick="modify('{{reply.id}}','{{reply.replyCon}}')" class="btn btn-primary">수정</a>
+                                    <a href="./deleteReply/?id={{reply.id}}&c_id={{content.id}}"type="submit" class="btn btn-default">삭제</a>
+                                </td>
+                            {% endif %}
+                        </tr>
+                    </div>
+                </form>
+                {% endfor %} 
+                
+            </tbody>
+        </table>
+    </div>
+    
+    
+   
+    <!-- //bodytext_area -->
+
+</div>
+<!-- //container -->
+
+
+
+{% endblock %}
