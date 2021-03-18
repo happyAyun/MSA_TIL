@@ -25,7 +25,7 @@ def login(request):
 def join(request):
     return render(request,"web01/join.html")
 
-@api_view(['GET'])
+@api_view(['POST']) ########
 def createList(request):
     serializer = ContentSerializer(data=request.data)
     if serializer.is_valid():
@@ -49,7 +49,7 @@ def moreView(request,pk):
     return Response(serializer.data)
 
 
-@api_view(['GET'])
+@api_view(['DELETE'])
 def deleteList(request,pk):
     content = Content.objects.get(id=pk)
     content.delete()
@@ -69,16 +69,16 @@ def updateView(request,pk):
         serializer.save()
     return Response(serializer.data)
 
-@api_view(['GET'])
-def listSearch(request,str):
-    contents = Content.objects.filter(Q(title__icontains=str) | Q(context__icontains=str)).distinct()
-    serializer = ContentSerializer(contents)
+@api_view(['POST']) ######## DB에 저장되지 않는 text를 받아오는 것.
+def listSearch(request):
+    contents = Content.objects.filter(Q(title__icontains=request.data) | Q(context__icontains=request.data)).distinct()
+    serializer = ContentSerializer(instance = contents)
     if serializer.is_valid():
         serializer.save()
     return Response(serializer.data)
 
 
-@api_view(['POST'])       
+@api_view(['POST']) ########       
 def userJoin(request):
     serializer = UserSerializer(data=request.data)
     if serializer.is_valid():
@@ -93,7 +93,7 @@ def userJoin(request):
         return Response(serializer.data.password)
   
 
-@api_view(['POST'])
+@api_view(['POST']) ########
 def userLogin(request):
     serializer = UserSerializer(data=request)
     if serializer.is_valid():
@@ -110,7 +110,7 @@ def logout(request):
         del request.session['user']
     return HttpResponseRedirect('/')
 
-@api_view(['GET'])
+@api_view(['POST']) ########
 def createReply(request,pk):
     # content pk // reply 의 모든 데이터
     serializer = ReplySerializer(data=request.data)
@@ -121,27 +121,27 @@ def createReply(request,pk):
         serializer = ReplySerializer(reply)
     return Response(serializer.data)
 
-@api_view(['GET'])
-def myCreateReply(request,pk):
-    serializer = ReplySerializer(data=request.data)
-    if serializer.is_valid():
-        serializer.save()
-        content = Content.objects.get(id=pk)
-        reply = Reply.objects.get(originalCon=content)
-        serializer = ReplySerializer(reply)
-    return Response(serializer.data)
 
 @api_view(['GET'])
+def myCreateReply(request): # 모든 댓글 삭제권한을 가짐(but, 수정은 나의 댓글만 수정할 수 있음).
+    replies = Reply.objects.all()
+    serializer = ReplySerializer(replies,many=True) # many=True
+    return Response(serializer.data)
+    
+
+@api_view(['DELETE']) 
 def deleteReply(request,pk):
     reply = Reply.objects.get(id=pk)
     reply.delete()
     return Response('Reply Delete!')
 
-@api_view(['GET'])
-def myDeleteReply(request,pk):
+@api_view(['GET']) ########
+def myDeleteReply(request, pk):
+    s_user = request.session['user']
     reply = Reply.objects.get(id=pk)
-    reply.delete()
-    return Response('Reply Delete!')
+    if reply.user == s_user: # ??
+        reply.delete()
+        return Response('Reply Delete!')
 
 def myPage(request):
     return render(request, 'web01/myPage.html')
@@ -149,7 +149,7 @@ def myPage(request):
 def pwChange(request):
     return render(request, 'web01/pwChange.html')
 
-@api_view(['POST'])
+@api_view(['POST']) ########
 def changePW(request):
     s_user = request.session['user']
     user = User.objects.get(user_id=s_user)
@@ -167,7 +167,7 @@ def changePW(request):
 def secession(request):
     return render(request,'web01/secession.html')
 
-@api_view(['GET'])
+@api_view(['GET']) ########
 def myWriting(request):
     s_user = request.session['user']
     user = User.objects.get(user_id=s_user)
@@ -176,7 +176,7 @@ def myWriting(request):
     return Response(serializer.data)
 
 
-@api_view(['POST'])
+@api_view(['POST']) ########
 def resetUser(request):
     s_user = request.session['user']
     if s_user.password == request.data.password:
@@ -185,9 +185,11 @@ def resetUser(request):
         return Response('Delete!')
     return Response('Not Same PW!')
 
-@api_view(['GET'])
-def myArticle(request,pk):
-    content = Content.objects.get(id=pk)
+@api_view(['GET']) ########
+def myArticle(request):
+    s_user = request.secession['user']
+    user = User.objects.get(user_id=s_user)
+    content = Content.objects.get(userId=user)
     replies = Reply.objects.filter(originalCon=content)
     serializer_C = ContentSerializer(content)
     serializer_R = ReplySerializer(replies)

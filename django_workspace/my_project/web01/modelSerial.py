@@ -10,10 +10,10 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 class ContentSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Content
-        fields = ['id','title','context','cnt','userId']
+        fields = ['id','title','context','cnt','userId_id']  # foreign key -> userId_id : "_"
 
 
 class ReplySerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Reply
-        fields = ['id','user','replyCon','originalCon']
+        fields = ['id','user','replyCon','originalCon_id'] 
