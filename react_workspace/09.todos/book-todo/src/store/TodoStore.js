@@ -14,11 +14,13 @@ class TodoStore {
       ...this.todo, // 원래 데이터는 그대로 있고
       [name]: value, // name의 값만 value로 바뀐다.
     };
+    console.log(this.todo);
   }
 
   @action
   addTodo() {
     this.todos = this.todos.concat(this.todo);
+    console.log(this.todos);
   }
 
   @action

@@ -1,4 +1,4 @@
-const { createProxyMiddleware } = require("http-proxy-middleware"); // yarn http-proxy-middleware
+const { createProxyMiddleware } = require("http-proxy-middleware"); // yarn add http-proxy-middleware
 
 module.exports = function (app) {
   app.use(
